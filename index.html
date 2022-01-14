@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html ng-app="demo">
+
+<head>
+  <meta charset="utf-8" />
+  <title>ShopBridge</title>
+  <script data-require="jquery@*" data-semver="2.1.4" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <script data-require="bootstrap@3.3.6" data-semver="3.3.5" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link data-require="bootstrap-css@3.3.6" data-semver="3.3.6" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+  <link data-require="bootstrap@3.3.6" data-semver="3.3.5" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+  <link data-require="bootstrap@3.3.6" data-semver="3.3.5" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css" />
+  <link data-require="bootstrap@3.3.6" data-semver="3.3.5" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+</head>
+
+<body ng-controller="MainController as mainVm">
+
+ <br>
+  <h1>Add a New Product </h1>
+  <form ng-submit="mainVm.addItem()">
+    <div class="form-group">
+      <label for="pname">Product Name</label>
+      <input type="text" ng-model="mainVm.newitem.pname" class="form-control" id="pname" placeholder="Product Name"/>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" ng-model="mainVm.newitem.price" class="form-control" id="price" placeholder="Price"/>
+    </div>
+    <div class="form-group">
+      <label for="date">Delivery Date</label>
+      <input type="date" ng-model="mainVm.newitem.deldate" class="form-control" id="deldate">
+    </div>
+    <button type="submit" class="btn btn-default">Add</button>
+  </form>
+
+<br><br>
+  <input type="search" class="form-control" ng-model="mainVm.search" placeholder="Search here..">
+ <br><br>
+<table class="table table-stripped">
+    <thead>
+      <tr>
+        <th>Delete</th>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Delivery Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in mainVm.items | filter:mainVm.search">
+        <td><i ng-click="mainVm.deleteItem($index)" class="fa fa-times"></i></td>
+        <td>{{item.pid}}</td>
+        <td>{{item.pname}}</td>
+        <td>{{item.price | currency}}</td>
+        <td>{{item.deldate | date:'MM/dd/yyyy'}}</td>
+        <td>
+          
+          <form name= "addForm" ng-submit="mainVm.editItem($index)" >
+          <fieldset>
+            
+           
+            <div class="col-xs-12">
+             
+
+              <button type="button" class="btn btn-primary" ng-click= "editform = true; mainVm.edIt(item)">Edit</button>
+            </div>
+           
+            <div class="row" id="editform" ng-show="editform">
+
+            
+
+
+<div class="form-group">
+   <label for="pname">Product Name</label>
+      <input type="text" ng-model="mainVm.updateItem.pname" class="form-control" id="pname" placeholder="Product Name" ng-required="true"/>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" ng-model="mainVm.updateItem.price" class="form-control" id="price" placeholder="Price" ng-required="true"/>
+    </div>
+    <div class="form-group">
+      <label for="date">Delivery Date</label>
+      <input type="date" ng-model="mainVm.updateItem.deldate" id="deldate" class="form-control" ng-required="true"/>
+    </div>
+
+   
+    <button type="submit" class="btn btn-default" ng-click= "editform = false" >Update</button>
+    
+        
+          </div>
+      
+      </fieldset>
+    </form>
+	
+    
+        </td>
+        
+  </div>
+  
+            
+
+
+      </tr>
+
+  
+
+    </tbody>
+  </table>
+  
+
+  
+  <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.8/angular.js" data-semver="1.4.8"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
