@@ -38,8 +38,13 @@ mainVm.editItem = function(position){
 
 
     mainVm.items = [{
-     
+      "pid": 1,
+      "pname": "Shampoo",
+      "price": 210,
+      "deldate": "2022-01-14T18:30:00.000Z"
     }]
+     
+    
 
 
 
