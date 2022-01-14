@@ -38,25 +38,7 @@ mainVm.editItem = function(position){
 
 
     mainVm.items = [{
-      "pid": 1,
-      "pname": "Shampoo",
-      "price": 210,
-      "deldate": "1/15/2016"
-    }, {
-      "pid": 2,
-      "pname": "Conditioner",
-      "price": 260,
-      "deldate": "1/15/2016"
-    }, {
-       "pid": 3,
-      "pname": "Hair Dryer",
-      "price": 204,
-      "deldate": "1/15/2016"
-    }, {
-       "pid": 4,
-      "pname": "Hair Color",
-      "price": 230,
-      "deldate": "1/15/2016"
+     
     }]
 
 
